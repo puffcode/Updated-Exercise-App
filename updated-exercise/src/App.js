@@ -1,24 +1,73 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import GlobalStyle from "./styles";
+import Duration from "./Duration";
+import Repetition from "./Repetition";
+import "./App.css";
 
 function App() {
+  const [selectedExercise, setSelectedExercise] = useState(null);
+
+  const handleExerciseClick = (exercise) => {
+    setSelectedExercise(exercise);
+  };
+
+  const handleBackClick = () => {
+    setSelectedExercise(null);
+  };
+
+  const isDurationExercise = (exercise) => {
+    return exercise === "Running";
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <div className="App">
+        <header className="App-header">
+          {!selectedExercise && <h1 className="home-header">HOME</h1>}
+          {selectedExercise ? (
+            isDurationExercise(selectedExercise) ? (
+              <Duration name={selectedExercise} onBackClick={handleBackClick} />
+            ) : (
+              <Repetition
+                name={selectedExercise}
+                onBackClick={handleBackClick}
+              />
+            )
+          ) : (
+            <>
+              <h1 className="exercise-header">Select an Exercise</h1>
+              <div className="exercise-buttons">
+                <button
+                  className="exercise-button"
+                  onClick={() => handleExerciseClick("Push-ups")}
+                >
+                  Push-ups
+                </button>
+                <button
+                  className="exercise-button"
+                  onClick={() => handleExerciseClick("Running")}
+                >
+                  Running
+                </button>
+                <button
+                  className="exercise-button"
+                  onClick={() => handleExerciseClick("Plank")}
+                >
+                  Plank
+                </button>
+                <button
+                  className="exercise-button"
+                  onClick={() => handleExerciseClick("Squat")}
+                >
+                  Squat
+                </button>
+              </div>
+            </>
+          )}
+        </header>
+      </div>
+    </>
   );
 }
 
