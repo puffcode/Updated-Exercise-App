@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import GlobalStyle from "./styles";
 import Duration from "./Duration";
 import Repetition from "./Repetition";
+import Running from "./Running";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,10 @@ function App() {
     return exercise === "Running";
   };
 
+  const isRunningExercise = (exercise) => {
+    return exercise === "Running2";
+  };
+
   return (
     <>
       <GlobalStyle />
@@ -28,6 +33,8 @@ function App() {
           {selectedExercise ? (
             isDurationExercise(selectedExercise) ? (
               <Duration name={selectedExercise} onBackClick={handleBackClick} />
+            ) : isRunningExercise(selectedExercise) ? (
+              <Running name={selectedExercise} onBackClick={handleBackClick} />
             ) : (
               <Repetition
                 name={selectedExercise}
@@ -48,7 +55,13 @@ function App() {
                   className="exercise-button"
                   onClick={() => handleExerciseClick("Running")}
                 >
-                  Running
+                  Running (Duration)
+                </button>
+                <button
+                  className="exercise-button"
+                  onClick={() => handleExerciseClick("Running2")}
+                >
+                  Running (Laps)
                 </button>
                 <button
                   className="exercise-button"

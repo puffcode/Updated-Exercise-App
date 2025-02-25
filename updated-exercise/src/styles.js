@@ -46,18 +46,18 @@ const GlobalStyle = createGlobalStyle`
     padding: 20px;
   }
 
-  .duration-exercise, .repetition-exercise {
+  .duration-exercise, .repetition-exercise, .running-exercise {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .duration-exercise .timer {
+  .duration-exercise .timer, .running-exercise .timer {
     font-size: 2em;
     margin: 20px 0;
   }
 
-  .duration-exercise button, .repetition-exercise button, .back-button {
+  .duration-exercise button, .repetition-exercise button, .running-exercise button, .back-button {
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     padding: 10px 20px;
@@ -70,7 +70,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 5px;
   }
 
-  .duration-exercise button:hover, .repetition-exercise button:hover, .back-button:hover {
+  .duration-exercise button:hover, .repetition-exercise button:hover, .running-exercise button:hover, .back-button:hover {
     background-color: #21a1f1;
   }
 
